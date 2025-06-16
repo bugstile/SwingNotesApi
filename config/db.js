@@ -24,7 +24,7 @@ const initializeDB = async () => {
         surname VARCHAR(100) NOT NULL,
         email VARCHAR(255) NOT NULL UNIQUE,
         password_hash TEXT NOT NULL,
-        createdAt TIMESTAMP DEFAULT now()
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
 
@@ -32,17 +32,17 @@ const initializeDB = async () => {
       CREATE TABLE IF NOT EXISTS note (
         id SERIAL PRIMARY KEY,
         userId INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-        title VARCHAR(50) NOT NULL,
-        text VARCHAR(300) NOT NULL,
-        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
-        modifiedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+        title VARCHAR(250) NOT NULL,
+        text TEXT NOT NULL,
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        modifiedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
 
     await client.query("COMMIT");
   } catch (error) {
     await client.query("ROLLBACK");
-    console.error("❌ Error initializing database:", error.message);
+    console.error("❌ Error initializing database:", error);
   } finally {
     client.release();
   }
