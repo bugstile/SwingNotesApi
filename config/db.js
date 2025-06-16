@@ -22,7 +22,7 @@ const initializeDB = async () => {
         id SERIAL PRIMARY KEY,
         firstname VARCHAR(100),
         surname VARCHAR(100) NOT NULL,
-        email VARCHAR(255) NOT NULL UNIQUE,
+        email VARCHAR(100) NOT NULL UNIQUE,
         password_hash TEXT NOT NULL,
         createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
@@ -30,10 +30,10 @@ const initializeDB = async () => {
 
     await client.query(`
       CREATE TABLE IF NOT EXISTS note (
-        id SERIAL PRIMARY KEY,
+        id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
         userId INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-        title VARCHAR(250) NOT NULL,
-        text TEXT NOT NULL,
+        title VARCHAR(50) NOT NULL,
+        text VARCHAR(300) NOT NULL,
         createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         modifiedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
