@@ -1,7 +1,10 @@
 # FJSX24-Backendutveckling-Vecka23
-Individuell examinations start + (Eventuella repetitions lektioner) 
+Individuell examinations start + (Eventuella repetitions lektioner)
 
 # Swing notes API
+
+# Database Structure
+This projects database has a dbdiagram [https://dbdiagram.io/d/SwingNotesAPI-Sebastian-Ritschewald-684b215c1dff20a534d2e8a3](db.diagram.io)
 
 ## Instruktioner
 

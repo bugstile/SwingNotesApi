@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 const initializeDB = async () => {
-  const client = await pool.connect(); // ⬅️ Move outside try-catch
+  const client = await pool.connect();
   try {
     await client.query("BEGIN");
 
