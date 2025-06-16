@@ -1,0 +1,38 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "This project is about building a secure notes API where users can sign up, log in, and manage notes (create, read, update, delete) using Node.js, PostgreSQL, JWT for authentication, and Swagger for documentation. The API also includes an optional search feature (for higher grades) and emphasizes proper error handling and data validation.",
+  "main": "server.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bugstile/SwingNotesApi.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "bugstile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bugstile/SwingNotesApi/issues"
+  },
+  "homepage": "https://github.com/bugstile/SwingNotesApi#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jest": "^30.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.0",
+    "zod": "^3.25.65"
+  }
+}
