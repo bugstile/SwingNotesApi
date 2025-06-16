@@ -21,9 +21,9 @@ const initializeDB = async () => {
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         firstname VARCHAR(100),
-        surname VARCHAR(100),
-        email TEXT UNIQUE,
-        password_hash TEXT,
+        surname VARCHAR(100) NOT NULL,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        password_hash TEXT NOT NULL,
         createdAt TIMESTAMP DEFAULT now()
       );
     `);
@@ -32,10 +32,10 @@ const initializeDB = async () => {
       CREATE TABLE IF NOT EXISTS note (
         id SERIAL PRIMARY KEY,
         userId INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-        title VARCHAR(50),
-        text VARCHAR(300),
-        createdAt TIMESTAMP DEFAULT now(),
-        modifiedAt TIMESTAMP DEFAULT now()
+        title VARCHAR(50) NOT NULL,
+        text VARCHAR(300) NOT NULL,
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+        modifiedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
       );
     `);
 
