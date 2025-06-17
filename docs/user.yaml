@@ -1,0 +1,54 @@
+paths:
+  /api/user/signup:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstname:
+                  type: string
+                surname:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - firstname
+                - surname
+                - email
+                - password
+      responses:
+        '201':
+          description: Account successfully created
+        '400':
+          description: Bad request (missing fields or duplicate email)
+
+  /api/user/login:
+    post:
+      summary: Login a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: Login successful with token
+        '401':
+          description: Invalid credentials

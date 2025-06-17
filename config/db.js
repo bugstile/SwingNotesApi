@@ -17,6 +17,8 @@ const initializeDB = async () => {
   try {
     await client.query("BEGIN");
 
+    await client.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`);
+
     await client.query(`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
