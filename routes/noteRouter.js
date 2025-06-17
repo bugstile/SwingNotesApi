@@ -8,7 +8,7 @@ import {
   searchNotesHandler,
 } from "../controllers/noteController.js";
 import validate from "../middleware/validate.js";
-import { noteSchema, noteUpdateSchema, noteDeleteSchema } from "../validation/noteValidation.js";
+import { noteSchema, noteUpdateSchema, noteDeleteSchema, noteSearchSchema } from "../validation/noteValidation.js";
 
 const router = express.Router();
 
@@ -16,9 +16,9 @@ const router = express.Router();
 router.use(verifyJWT);
 
 router.get("/", getAllNotes);
-router.post("/", validate(noteSchema), createNoteHandler);
-router.put("/", validate(noteUpdateSchema), updateNoteHandler);
-router.delete("/", validate(noteDeleteSchema), deleteNoteHandler);
-router.get("/search", searchNotesHandler);
+router.post("/", validate(noteSchema, "body"), createNoteHandler);
+router.put("/:id", validate(noteUpdateSchema, "body"), updateNoteHandler);
+router.delete("/:id", validate(noteDeleteSchema, "params"), deleteNoteHandler);
+router.get("/search", validate(noteSearchSchema, "query"), searchNotesHandler);
 
 export default router;
